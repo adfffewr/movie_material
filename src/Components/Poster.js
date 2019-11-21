@@ -65,6 +65,17 @@ const YearBox = styled.span`
     padding:10px;
     box-sizing:border-box;
 `;
+const GridList = styled.li`
+    padding:5px;
+    width:25%;
+    
+    @media screen and (max-width : 768px) {
+        width:33.33%;
+    }
+    @media screen and (max-width : 450px) {
+        width:50%;
+    }
+`;
 const PaperCss = {
     overflow:"hidden",
 };
@@ -72,10 +83,6 @@ const LinkCss = {
     textDecoration : "none",
     color: "#FFF",
     fontWeight:"bold",
-};
-const GridListTileCss = {
-    padding:"5px",
-    width:"230px"
 };
 const ButtonBox = styled.div`
     padding:0 5px 5px;
@@ -85,7 +92,7 @@ const ButtonBox = styled.div`
 
 
 const Poster = ({id , imageUrl , title , rating , year }) => (
-    <GridListTile style={GridListTileCss}>
+    <GridList>
         <Paper style={PaperCss}>
             
                 <Container>
@@ -118,7 +125,7 @@ const Poster = ({id , imageUrl , title , rating , year }) => (
                 </Container>
             
         </Paper>
-    </GridListTile>
+    </GridList>
 );
 
 export default Poster;

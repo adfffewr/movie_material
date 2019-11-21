@@ -15,6 +15,26 @@ export const moviesApi = {
             }, // 값을 넘긴다
         })
     },
+    popular : () => {
+        return api({
+            method: 'GET',
+            url: '/movie/popular',  // api 통신 상세 주소
+            params : { 
+                api_key : 'a992d1fae6c06b990f53908e421ee199',
+                language : 'en-US'
+            }, // 값을 넘긴다
+        })
+    },
+    upcoming : () => {
+        return api({
+            method: 'GET',
+            url: '/movie/upcoming',  // api 통신 상세 주소
+            params : { 
+                api_key : 'a992d1fae6c06b990f53908e421ee199',
+                language : 'en-US'
+            }, // 값을 넘긴다
+        })
+    },
     movieDetail : (id) => {
         return api({
             method: 'GET',

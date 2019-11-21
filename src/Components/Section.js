@@ -9,7 +9,7 @@ const Title = styled.h1`
     font-size:26px;
 `;
 const GridListCss = {
-    flexWrap: 'nowrap',
+    // flexWrap: 'wrap',
     transform: 'translateZ(0)',
 }
 
