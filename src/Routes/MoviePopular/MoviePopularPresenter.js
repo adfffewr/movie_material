@@ -6,15 +6,15 @@ import Section from '../../Components/Section';
 import Poster from '../../Components/Poster'
 
 
-const HomePresenter = ({nowPlaying ,error ,loading}) => (
+const MoviePopularPresenter = ({popular ,error ,loading}) => (
     <>
         {loading ? (
             <Loading></Loading>
         ) : (
             <Container maxWidth="lg">
-                {nowPlaying && nowPlaying.length > 0 && (
-                    <Section title="새로운 영화">
-                        {nowPlaying.map(movie => (
+                {popular && popular.length > 0 && (
+                    <Section title="베스트 영화">
+                        {popular.map(movie => (
                             <Poster
                                 key={movie.id}
                                 id={movie.id}
@@ -38,4 +38,4 @@ const HomePresenter = ({nowPlaying ,error ,loading}) => (
 
 
 
-export default HomePresenter;
+export default MoviePopularPresenter;

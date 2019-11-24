@@ -1,5 +1,5 @@
 import React from 'react';
-import HomePresenter from './HomePresenter';
+import MoviePresenter from './MoviePresenter';
 import { moviesApi } from '../../api'
 
 export default class extends React.Component {
@@ -12,9 +12,11 @@ export default class extends React.Component {
     async componentDidMount() {
         try{
             const {data : { results : nowPlaying} } = await moviesApi.nowPlaying();
+            
             this.setState({
-                nowPlaying
-            })
+                nowPlaying : nowPlaying
+            });
+            
         } catch{
             this.setState({
                 error : '에러입니다 다시 시도해 주세요.'
@@ -26,12 +28,10 @@ export default class extends React.Component {
         }
     }
 
-    
-
     render() {
         const { nowPlaying , error , loading } = this.state
         return (
-            <HomePresenter 
+            <MoviePresenter 
             nowPlaying={nowPlaying} 
             error={error} 
             loading={loading} 

@@ -11,7 +11,7 @@ export const moviesApi = {
             url: '/movie/now_playing',  // api 통신 상세 주소
             params : { 
                 api_key : 'a992d1fae6c06b990f53908e421ee199',
-                language : 'en-US'
+                language : 'en-KR'
             }, // 값을 넘긴다
         })
     },
@@ -21,7 +21,7 @@ export const moviesApi = {
             url: '/movie/popular',  // api 통신 상세 주소
             params : { 
                 api_key : 'a992d1fae6c06b990f53908e421ee199',
-                language : 'en-US'
+                language : 'en-KR'
             }, // 값을 넘긴다
         })
     },
@@ -31,7 +31,7 @@ export const moviesApi = {
             url: '/movie/upcoming',  // api 통신 상세 주소
             params : { 
                 api_key : 'a992d1fae6c06b990f53908e421ee199',
-                language : 'en-US'
+                language : 'en-KR'
             }, // 값을 넘긴다
         })
     },
@@ -41,7 +41,7 @@ export const moviesApi = {
             url: `/movie/${id}`,  // api 통신 상세 주소
             params : { 
                 api_key : 'a992d1fae6c06b990f53908e421ee199',
-                language : 'en-US',
+                language : 'en-KR',
                 append_to_response : 'videos'
             }, // 값을 넘긴다
         })
@@ -52,7 +52,7 @@ export const moviesApi = {
             url: `/search/movie`,  // api 통신 상세 주소
             params : { 
                 api_key : 'a992d1fae6c06b990f53908e421ee199',
-                language : 'en-US',
+                language : 'en-KR',
                 query : encodeURIComponent(term)
             }, // 값을 넘긴다
         })

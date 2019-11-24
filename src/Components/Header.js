@@ -128,7 +128,7 @@ const Input = styled.input`
     color:#FFF;
     &:hover{
         width:150px;
-    }
+    };
 `;
 const ListCss = {
     paddingLeft : '32px'
@@ -140,6 +140,7 @@ class HeaderTag extends React.Component{
         show : false,
         open : false,
         open2 : false,
+        headerTitle : '',
     };
     opneSide = () => event => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -152,6 +153,8 @@ class HeaderTag extends React.Component{
     closeSide = () => event => {
         this.setState({
             show : false,
+            open : false,
+            open2 : false,
         })
     };
     handleClick = () => event => {
@@ -182,7 +185,8 @@ class HeaderTag extends React.Component{
                         <MenuIcon />
                     </IconButton>
                     <Typography style={TitleCSs}  variant="h6" noWrap>
-                        <Title current={pathname === '/'}>Home</Title>
+                        <Title current={pathname === '/'}>개봉중 영화</Title>
+                        <Title current={pathname === '/movie_popular'}>베스트 영화</Title>
                         <Title current={pathname === '/search'}>Search</Title>
                         {/* <SLink to="/" current={pathname === '/'}>Home</SLink>
                 <SLink to="/search" current={pathname === '/search'}>search</SLink> */}
@@ -217,7 +221,7 @@ class HeaderTag extends React.Component{
                                     </List>
                                     <List component="div" disablePadding>
                                         <ListItem button style={ListCss}>
-                                            <SLink to="/" onClick={this.closeSide()}>
+                                            <SLink to="/upcoming" onClick={this.closeSide()}>
                                                 <ListItemIcon>
                                                     <AccessAlarmIcon />
                                                 </ListItemIcon>
@@ -227,7 +231,7 @@ class HeaderTag extends React.Component{
                                     </List>
                                     <List component="div" disablePadding>
                                         <ListItem button style={ListCss}>
-                                            <SLink to="/" onClick={this.closeSide()}>
+                                            <SLink to="/movie_popular" onClick={this.closeSide()}>
                                                 <ListItemIcon>
                                                     <StarIcon />
                                                 </ListItemIcon>
