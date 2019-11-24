@@ -187,6 +187,7 @@ class HeaderTag extends React.Component{
                     <Typography style={TitleCSs}  variant="h6" noWrap>
                         <Title current={pathname === '/'}>개봉중 영화</Title>
                         <Title current={pathname === '/movie_popular'}>베스트 영화</Title>
+                        <Title current={pathname === '/movie_upcoming'}>개봉예정 영화</Title>
                         <Title current={pathname === '/search'}>Search</Title>
                         {/* <SLink to="/" current={pathname === '/'}>Home</SLink>
                 <SLink to="/search" current={pathname === '/search'}>search</SLink> */}
@@ -221,7 +222,7 @@ class HeaderTag extends React.Component{
                                     </List>
                                     <List component="div" disablePadding>
                                         <ListItem button style={ListCss}>
-                                            <SLink to="/upcoming" onClick={this.closeSide()}>
+                                            <SLink to="/movie_upcoming" onClick={this.closeSide()}>
                                                 <ListItemIcon>
                                                     <AccessAlarmIcon />
                                                 </ListItemIcon>
