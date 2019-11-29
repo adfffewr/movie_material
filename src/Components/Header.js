@@ -141,6 +141,7 @@ class HeaderTag extends React.Component{
         open : false,
         open2 : false,
         headerTitle : '',
+        InputVlue : '',
     };
     opneSide = () => event => {
         if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
@@ -167,9 +168,23 @@ class HeaderTag extends React.Component{
             open2 : !this.state.open2,
         })
     };
+    ValueChange = (e) => {
+        this.setState({
+            InputVlue : e.target.value
+        })
+    };
+    onSubmitInput = (e) => {
+       
+        if (e.key === 'Enter') {
+            const push = this.props.history.push
+            // console.log(this.props.history.push)
+            // console.log(this.state.InputVlue);
+            push(`/search/${this.state.InputVlue}`);
+        }
+    }
     
     render() {
-        const { show , open , open2 } = this.state;
+        const { show , open , open2 , InputVlue  } = this.state;
         const pathname = this.props.location.pathname
         return (
             <>
@@ -188,6 +203,7 @@ class HeaderTag extends React.Component{
                         <Title current={pathname === '/'}>개봉중 영화</Title>
                         <Title current={pathname === '/movie_popular'}>베스트 영화</Title>
                         <Title current={pathname === '/movie_upcoming'}>개봉예정 영화</Title>
+                        <Title current={pathname === '/tv_now'}>드라마</Title>
                         <Title current={pathname === '/search'}>Search</Title>
                         {/* <SLink to="/" current={pathname === '/'}>Home</SLink>
                 <SLink to="/search" current={pathname === '/search'}>search</SLink> */}
@@ -197,7 +213,7 @@ class HeaderTag extends React.Component{
                             <SearchIcon />
                         </div>
                         <InputBox>
-                            <Input type="text" />
+                            <Input value={InputVlue} onChange={this.ValueChange} onKeyDown={this.onSubmitInput} />
                         </InputBox>
                         
                     </div>
@@ -211,34 +227,35 @@ class HeaderTag extends React.Component{
                                 </ListItem>
                                 <Collapse in={open} timeout="auto" unmountOnExit>
                                     <List component="div" disablePadding>
-                                        <ListItem button style={ListCss}>
-                                            <SLink to="/" onClick={this.closeSide()}>
+                                        <SLink to="/" onClick={this.closeSide()}>
+                                            <ListItem button style={ListCss}>
+                                                
                                                 <ListItemIcon>
                                                     <VideocamIcon />
                                                 </ListItemIcon>
                                                 <ListItemText primary="개봉중 영화" />
-                                            </SLink>
-                                        </ListItem>
+                                            </ListItem>
+                                        </SLink>
                                     </List>
                                     <List component="div" disablePadding>
-                                        <ListItem button style={ListCss}>
-                                            <SLink to="/movie_upcoming" onClick={this.closeSide()}>
+                                        <SLink to="/movie_upcoming" onClick={this.closeSide()}>
+                                            <ListItem button style={ListCss}>
                                                 <ListItemIcon>
                                                     <AccessAlarmIcon />
                                                 </ListItemIcon>
                                                 <ListItemText primary="개봉예정 영화" />
-                                            </SLink>
-                                        </ListItem>
+                                            </ListItem>
+                                        </SLink>
                                     </List>
                                     <List component="div" disablePadding>
-                                        <ListItem button style={ListCss}>
-                                            <SLink to="/movie_popular" onClick={this.closeSide()}>
+                                        <SLink to="/movie_popular" onClick={this.closeSide()}>
+                                            <ListItem button style={ListCss}>
                                                 <ListItemIcon>
                                                     <StarIcon />
                                                 </ListItemIcon>
                                                 <ListItemText primary="베스트 영화" />
-                                            </SLink>
-                                        </ListItem>
+                                            </ListItem>
+                                        </SLink>
                                     </List>
                                 </Collapse>
                                 <ListItem button onClick={this.handleClick2()}>
@@ -248,34 +265,14 @@ class HeaderTag extends React.Component{
                                 </ListItem>
                                 <Collapse in={open2} timeout="auto" unmountOnExit>
                                     <List component="div" disablePadding>
-                                        <ListItem button style={ListCss}>
-                                            <SLink to="/" onClick={this.closeSide()}>
+                                        <SLink to="/tv_now" onClick={this.closeSide()}>
+                                            <ListItem button style={ListCss}>
                                                 <ListItemIcon>
                                                     <LiveTvIcon />
                                                 </ListItemIcon>
-                                                <ListItemText primary="방영중 드라마" />
-                                            </SLink>
-                                        </ListItem>
-                                    </List>
-                                    <List component="div" disablePadding>
-                                        <ListItem button style={ListCss}>
-                                            <SLink to="/" onClick={this.closeSide()}>
-                                                <ListItemIcon>
-                                                    <AccessAlarmIcon />
-                                                </ListItemIcon>
-                                                <ListItemText primary="방영예정 드라마" />
-                                            </SLink>
-                                        </ListItem>
-                                    </List>
-                                    <List component="div" disablePadding>
-                                        <ListItem button style={ListCss}>
-                                            <SLink to="/" onClick={this.closeSide()}>
-                                                <ListItemIcon>
-                                                    <StarIcon />
-                                                </ListItemIcon>
-                                                <ListItemText primary="베스트 드라마" />
-                                            </SLink>
-                                        </ListItem>
+                                                <ListItemText primary="드라마" /> 
+                                            </ListItem>
+                                        </SLink>
                                     </List>
                                 </Collapse>
                                 

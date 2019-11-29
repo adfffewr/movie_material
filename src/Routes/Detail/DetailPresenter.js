@@ -60,7 +60,8 @@ class DetailPresenter extends React.Component{
     }
 
     render() {
-        const {result ,loading} = this.props
+        const {result ,loading} = this.props;
+        {console.log(result)}
         return(
             <>
                 {loading ? (
@@ -74,8 +75,11 @@ class DetailPresenter extends React.Component{
                             <Title>{result.original_title}</Title>
                             <Container maxWidth='md'>
                                 <VideoBox>
-                                    <Iframe src={`https://www.youtube.com/embed/${result.videos.results[0].key}?controls=0`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                                    </Iframe>
+                                    {result.videos.results && result.videos.results.length > 0 && (
+                                        <Iframe src={`https://www.youtube.com/embed/${result.videos.results[0].key}?controls=0`} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                                        </Iframe>
+                                    )}
+                                    
                                 </VideoBox>
                                 <ItemTextBox>
                                     {result.overview}

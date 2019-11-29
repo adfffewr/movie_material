@@ -91,39 +91,36 @@ const ButtonBox = styled.div`
 
 
 
-const Poster = ({id , imageUrl , title , rating , year }) => (
+const Poster = ({id , imageUrl , title , rating , year , isMovie = true }) => (
     <GridList>
         <Paper style={PaperCss}>
-            
-                <Container>
-                    <ImageContainer>
-                        <Image 
-                            bgUrl={imageUrl 
-                                ? `https://image.tmdb.org/t/p/w300${imageUrl}` 
-                                : require("../assets/popcorn.jpg")
-                            }
-                        >
-                        </Image>
-                        <RatingBox>
-                            <Rating name="customized-10" value={rating} max={10} size="small" readOnly />
-                        </RatingBox> 
-                    </ImageContainer>
-                    <Title>
-                        {title.length > 15? `${title.substring(0,15)} ...` : title }
-                    </Title>
-                    <YearBox>
-                        {`${year[0]}년 ${year[1]}월 ${year[2]}일`}
-                    </YearBox>
-                    <ButtonBox>
-                        <Button variant="outlined">
-                            <Link to={`/movie/${id}`} style={LinkCss}>
-                                자세히 보기
-                            </Link>
-                        </Button>
-                    </ButtonBox>
-                    
-                </Container>
-            
+            <Container>
+                <ImageContainer>
+                    <Image 
+                        bgUrl={imageUrl 
+                            ? `https://image.tmdb.org/t/p/w300${imageUrl}` 
+                            : require("../assets/popcorn.jpg")
+                        }
+                    >
+                    </Image>
+                    <RatingBox>
+                        <Rating name="customized-10" value={rating} max={10} size="small" readOnly />
+                    </RatingBox> 
+                </ImageContainer>
+                <Title>
+                    {title.length > 15? `${title.substring(0,15)} ...` : title }
+                </Title>
+                <YearBox>
+                    {`${year[0]}년 ${year[1]}월 ${year[2]}일`}
+                </YearBox>
+                <ButtonBox>
+                    <Button variant="outlined">
+                        <Link to={ isMovie ? `/movie/${id}` : `/tv/${id}` } style={LinkCss}>
+                            자세히 보기
+                        </Link>
+                    </Button>
+                </ButtonBox>
+            </Container>
         </Paper>
     </GridList>
 );

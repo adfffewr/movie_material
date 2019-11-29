@@ -1,6 +1,6 @@
 import React from 'react';
 import DetailPresenter from './DetailPresenter';
-import { moviesApi } from '../../api';
+import { moviesApi , TVApi} from '../../api';
 
 export default class extends React.Component{
     constructor(props) {
@@ -29,6 +29,8 @@ export default class extends React.Component{
         try{
             if(isMovie) {
                 ({data : result } = await moviesApi.movieDetail(parsedId) )
+            } else {
+                ({data : result } = await TVApi.showDetail(parsedId) )
             }
         } catch {
             this.setState({ error : '디테일 오류 입니다.' })
